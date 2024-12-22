@@ -1,0 +1,51 @@
+footer {
+    position: relative;
+    bottom: 0;
+    padding: 15px;
+    width: 100vw;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #0b182b;
+}
+
+footer a {
+    display: inline;
+    font: 2.8vw 'Cabin';
+    font-weight: 400;
+    text-decoration: none;
+    margin: 0 5px 0 5px;
+    color: #cbcbcb;
+}
+
+footer a:hover {
+    scale: 1.05;
+}
+
+@media screen and (min-width: 521px) {
+
+    footer a {
+        font-size: 1.8vw;
+    }
+}
+
+@media screen and (min-width: 921px) {
+
+    footer a {
+        font-size: 1.3vw;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+
+    footer a {
+        font-size: 1vw;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1023px) and (orientation: landscape) {
+
+    footer a {
+        font-size: 1.5vw;
+    }
+}

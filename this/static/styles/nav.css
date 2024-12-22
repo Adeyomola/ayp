@@ -1,0 +1,77 @@
+    /* header */
+    header {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    #title {
+        font: 2rem 'Permanent Marker';
+        font-weight: 400;
+        color: #0b182b !important;
+        text-decoration: none;
+        text-align: center;
+        margin: 2vw;
+    }
+
+    /* nav */
+    nav {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        width: 80%;
+        max-width: 80%;
+        border-top: 1px dashed #0b182b;
+        border-bottom: 1px dashed #0b182b;
+        padding: 15px 0;
+    }
+
+    nav a {
+        font: 2.8vw 'Cabin';
+        font-weight: 800;
+        color: #0b182b !important;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    nav a:hover {
+        scale: 1.05;
+    }
+
+
+    @media screen and (min-width: 640px) {
+        nav a {
+            font-size: 1.8vw;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        #title {
+            font-size: 3.5rem;
+            margin-left: 6.3vw;
+        }
+
+        nav a {
+            font-size: 1.3vw;
+        }
+    }
+
+    @media screen and (min-width: 1280px) {
+
+        header {
+            background-size: 100% 200%;
+        }
+
+        nav a {
+            font-size: 1vw;
+        }
+    }
+
+    @media screen and (min-width: 480px) and (max-width: 1023px) and (orientation: landscape) {
+
+        nav a {
+            font-size: 1.5vw;
+        }
+    }

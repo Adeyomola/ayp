@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phones, Computers, Gadgets">
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/write.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/editor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/buttons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fa/css/font-awesome.min.css') }}">
+    <script src="{{ url_for('blog.static', filename='js/temp.js')}}" defer></script>
+    {% include 'head.html' %}
+    <title>Update | AboutYourPC</title>
+</head>
+
+<body>
+    {% extends 'nav.html' %}
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}
+    <div id="editorbuttoncontainer">
+        <select id="formatBlock">
+            <option value="p" selected>Paragraph</option>
+            <option value="h1">Heading 1</option>
+            <option value="h2">Heading 2</option>
+            <option value="h3">Heading 3</option>
+            <option value="h4">Heading 4</option>
+            <option value="h5">Heading 5</option>
+            <option value="h6">Heading 6</option>
+        </select>
+        <button class="editorbuttons" id="bold"><b>B</b></button>
+        <button class="editorbuttons" id="italic"><em>I</em></button>
+        <button class="editorbuttons" id="underline"><u>U</u></button>
+        <!-- <button class="editorbuttons" id="quotes"><i class="fa fa-quote-left"></i></button> -->
+        <button class="editorbuttons" id="justifyCenter"><i class="fa fa-align-justify"></i></button>
+        <button class="editorbuttons" id="justifyLeft"><i class="fa fa-align-left"></i></button>
+        <button class="editorbuttons" id="justifyRight"><i class="fa fa-align-right"></i></button>
+        <button class="editorbuttons" id="insertUnorderedList"><i class="fa fa-list-ul"></i></button>
+        <button class="editorbuttons" id="insertOrderedList"><i class="fa fa-list-ol"></i></button>
+        <button id="undo" class="editorbuttons">&#8630</button>
+        <button id="redo" class="editorbuttons">&#8631</button>
+        <button id="strikeThrough" class="editorbuttons"><i class="fa fa-strikethrough"></i></button>
+        <button id="subscript" class="editorbuttons"><i class="fa fa-subscript"></i></button>
+        <button id="superscript" class="editorbuttons"><i class="fa fa-superscript"></i></button>
+        <button id="createLink" class="editorbuttons"><i class="fa fa-link"></i></button>
+        <button id="unlink" class="editorbuttons"><i class="fa fa-unlink"></i></button>
+        <button id="outdent" class="editorbuttons"><i class="fa fa-outdent"></i></button>
+        <button id="indent" class="editorbuttons"><i class="fa fa-indent"></i></button>
+    </div>
+    <form method="post" enctype=multipart/form-data>
+        <input type="text" id="article-title-1" placeholder="Title:" name="title" value="{{ post_row['title'] }}"
+            autocomplete="off" required>
+        <!-- <textarea name="body" id="body" cols="30" rows="10" placeholder="Scribble..." autocomplete="off"
+            required>{{ post_row['body'] }}</textarea> -->
+        <input type="hidden" id="hiddeninput" name="body">
+        <div id="body" contenteditable="true">
+            {{ post_row['body'] | safe }}
+        </div>
+        <label for="postimage"> Upload Post Image </label>
+        <input type="file" id="postimage" name="file" accept="image/png, image/jpeg, image/webp">
+        <select id="" name="category">
+            <option value="{{ post_row['category'] }}" selected>Category</option>
+            <option value="skincare">Skincare</option>
+            <option value="hair">Hair</option>
+        </select>
+        <input type="text" name="fragment" id="fragment" placeholder="slug"
+            value="{{ post_row['fragment'] | replace('-', ' ' )}}">
+        <input type="text" name="image_credit" id="image_credit" placeholder="image credit"
+            value="{{ post_row['image_credit'] }}">
+        <input type="text" name="meta" id="image_credit" placeholder="meta description" value="{{ post_row['meta'] }}">
+        <button id="update" type="submit"
+            onclick="document.getElementById('hiddeninput').value = document.getElementById('body').innerHTML"> Update
+        </button>
+    </form>
+    <!-- PopUp -->
+    <div id="linkPopUp"
+        style="display: none; width: 100vw; height: 100vh; position: fixed; font: 0.8rem 'Nunito'; z-index: 100; background-color: #1d242c1a;  align-items: center; justify-content: center;">
+        <div style="background-color: #4a678a93; padding: 1rem; border-radius: 0.2rem;">Enter a URL:
+            <input id="link" type="text" value="https://" style="outline: none;">
+            <button id="linkButton"
+                style="margin-top: 0; margin-bottom: 0; padding: 0.1rem; background-color: white;">Enter</button>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

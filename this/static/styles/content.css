@@ -1,0 +1,128 @@
+#link-container {
+    width: 100vw;
+    height: fit-content;
+    margin-top: 1rem;
+    min-height: fit-content;
+    margin-bottom: 27vh;
+}
+
+section {
+    display: grid;
+    margin: 0 2rem;
+}
+
+summary {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+    font-family: 'Cabin';
+    margin: 0 1rem 1rem 1rem;
+    color: #1d242c;
+    border-bottom: 1px solid #1d242c;
+    overflow: hidden;
+    justify-content: space-evenly;
+}
+
+summary:hover {
+    background-color: #d4d4d424;
+}
+
+summary>img {
+    padding-bottom: 0.5rem;
+    aspect-ratio: 1.79;
+}
+
+#preview {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-decoration: none;
+    color: #6c6262;
+    padding-bottom: 2vw;
+
+    @supports (-webkit-line-clamp: 3) {
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: initial;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        transform: none;
+        font-weight: 100;
+        font-size: 14px;
+        text-decoration: none;
+        color: #1d242c;
+    }
+}
+
+#article-title {
+    font: 16px 'Cabin';
+    font-weight: 600;
+    text-decoration: none;
+    color: #1d242c;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+}
+
+
+
+@media screen and (min-width: 521px) {
+    #welcome {
+        text-align: center;
+    }
+
+    section {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 1rem;
+    }
+
+    summary {
+        font-size: initial;
+    }
+
+    #article-title {
+        font: 14px 'Cabin';
+    }
+
+    #preview {
+        @supports (-webkit-line-clamp: 3) {
+            font-size: 14.5px;
+        }
+    }
+}
+
+@media screen and (min-width: 760px) {
+    #welcome {
+        text-align: center;
+    }
+
+    section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    summary {
+        font-size: initial;
+    }
+}
+
+@media screen and (min-width: 921px) {
+
+    section {
+        margin: 0 3rem;
+    }
+
+    #article-title {
+        font-size: 1rem;
+    }
+
+    #preview {
+        padding-bottom: none;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    section {
+        grid-template-columns: repeat(4, 1fr);
+        margin: 0 5rem;
+    }
+}

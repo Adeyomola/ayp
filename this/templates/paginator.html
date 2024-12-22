@@ -1,0 +1,8 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/paginator.css') }}">
+<script src="{{ url_for('blog.static', filename='js/paginator.js')}}" defer></script>
+<div id="paginator">
+    {% for page in range(total_pages) %}
+    <a class="pageNumbers" href="/post?p={{page + 1}}">{{page + 1}}</a>
+    {% endfor %}
+    <span>>></span>
+</div>

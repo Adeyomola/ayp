@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+html,
+body {
+    font-family: sans-serif;
+    width: 100vw;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: #fffcfc;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.flash {
+    z-index: 1;
+    color: #1d242c;
+    text-align: center;
+    transform: translateY(50%);
+    font-family: 'Nunito';
+}
+
+/* index.html styling */
+#ourtoppicks {
+    text-align: center;
+    font: 600 22px 'Cabin';
+    width: 100vw;
+    margin: 0.5vw;
+    padding: 0.5vh;
+    color: #0b182b;
+}
+
+/* home.html styling */
+
+#welcome {
+    font: 500 1.5rem 'Nunito';
+    color: #1d242c;
+    margin: 0 3.6rem;
+    margin-top: 1rem;
+}
+
+#privacy {
+    line-height: 1.5;
+    margin: 0 2rem;
+    font-family: 'Cabin';
+}
+
+@media screen and (min-width: 480px) {
+
+    #privacy {
+        max-width: 50%;
+        max-width: 80%;
+        transform: translate(5%, 0%);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    #privacy {
+        max-width: 50%;
+        transform: translate(50%, 0%);
+    }
+
+    #bio {
+        padding: 0rem 5rem 0.2rem 5rem;
+    }
+}

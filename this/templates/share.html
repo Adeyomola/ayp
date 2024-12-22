@@ -1,0 +1,27 @@
+<script src="{{ url_for('blog.static', filename='js/share.js')}}" defer></script>
+<div id="share">
+        <div>
+                <i id="shareIcon" class="fa fa-share-square-o fa-2x" aria-hidden="true"></i>
+                <p style="font-size: 0.6rem">Share</p>
+        </div>
+        <box class="shareButtons" hidden><a
+                        href="https://twitter.com/intent/tweet?text=I just wrote {{ post_row['title'] }}&url=https://aboutyourpc.com/{{ post_row['category'] }}/{{ post_row['fragment']}}"
+                        target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </box>
+        <box class="shareButtons" hidden><a
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://aboutyourpc.com/{{ post_row['category'] }}/{{ post_row['fragment']}}"
+                        target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        </box>
+        <box class="shareButtons" hidden><a
+                        href="https://www.linkedin.com/shareArticle?mini=true&url=https://aboutyourpc.com/{{ post_row['category'] }}/{{ post_row['fragment']}}"
+                        target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        </box>
+        <box class="shareButtons" hidden><a
+                        href="https://www.snapchat.com/scan?attachmentUrl=https://aboutyourpc.com/{{ post_row['category'] }}/{{ post_row['fragment']}}"
+                        target="_blank"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i></a>
+        </box>
+        <box class="shareButtons" hidden><a
+                        href=" https://api.whatsapp.com/send?text=https://aboutyourpc.com/{{ post_row['category'] }}/{{ post_row['fragment']}}"
+                        target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+        </box>
+</div>

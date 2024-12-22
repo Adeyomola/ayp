@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phones, Computers, Gadgets">
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Nunito|Quicksand">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/inputs.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/buttons.css') }}">
+    {% include 'head.html' %}
+    <title>AboutYourPC | Phones, Computers, Gadgets</title>
+</head>
+
+<body>
+    {% extends 'nav.html' %}
+    {% block content %}
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    <form method="post">
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" autocomplete="off" required>
+        <hr>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+        <hr>
+        <button type="submit"> Submit </button>
+    </form>
+    <!-- <a href="/forgotpassword" style="align-self: center; font: 0.8em 'Montserrat';">Forgot Password</a> -->
+    {% endblock %}
+</body>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1.0">
+    <meta name="description" content="Phones, Computers, Gadgets">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/content.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    {% include 'head.html' %}
+    {% include 'cookies.html' %}
+    <title>AboutYourPC | Phones, Computers, Gadgets</title>
+</head>
+
+<body>
+    {% extends 'nav.html' %}
+    {% block content %}
+    <div id="link-container">
+        <h1 id="ourtoppicks">Our Latest Articles</h1>
+        <section>
+            {% for post in posts %}
+            <summary>
+                {% if post['image_url'] %}
+                <img src="{{ post['image_url'] }}" alt="{{ post['title'] | safe }}" height="55%" width="100%">
+                {% endif %}
+                {% if not post['image_url'] %}
+                <img src="../static/images/placeholder.webp" alt="placeholder" height="55%" width="100%">
+                {% endif %}
+                <a href="/{{ post ['category'] }}/{{ post['fragment']}}" id="article-title">{{ post['title'] | safe
+                    }}</a>
+                <a href="/{{ post ['category'] }}/{{ post['fragment']}}" id="preview">{{ post['body'] | striptags |
+                    truncate(90, True, '..') | replace(" ",
+                    "//space//") | replace("<br>",
+                    "//nbsp//") | replace("<div>",
+                        "//nbsp//") | striptags | replace("//space//", " " ) |
+                        replace("//nbsp//", "\n") }}</a>
+            </summary>
+            {% endfor %}
+        </section>
+    </div>
+    {% include 'footer.html' %}
+    {% endblock %}
+</body>
+
+</html>

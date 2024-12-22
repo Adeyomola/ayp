@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+html,
+body {
+    font-family: sans-serif;
+    width: 100%;
+    scroll-behavior: smooth;
+    background-color: #fffcfc;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.flash {
+    z-index: 1;
+    color: #1d242c;
+    text-align: center;
+    transform: translateY(50%);
+    font-family: 'Nunito';
+}
+
+/* styling for get post */
+article {
+    display: flex;
+    max-height: max-content;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#postimage {
+    width: 85%;
+    padding: 0.5rem;
+    margin-top: 5vh;
+}
+
+#postimage>img {
+    width: 100%;
+    max-height: 100%;
+    aspect-ratio: 10 / 5;
+}
+
+#postimage>a {
+    font: 0.6rem 'Montserrat';
+    color: #333;
+}
+
+#article-title-2 {
+    width: 85%;
+    text-align: left;
+    font: 1.8em 'Cabin';
+    font-weight: 600;
+    color: #1d242c;
+    margin: 0.5vh;
+    padding: 0.5rem;
+}
+
+#author-name {
+    width: 85%;
+    text-align: left;
+    font: 0.85rem 'Montserrat';
+    margin: 0.5vh;
+    color: #1d242c;
+}
+
+#body-1 {
+    width: 85%;
+    max-width: 90%;
+    min-height: 70vh;
+    margin-bottom: 5vh;
+    padding: 0.5rem;
+    font: 1rem 'Cabin';
+    font-weight: 100;
+    overflow-y: scroll;
+    line-height: 1.5rem;
+}
+
+#body-1>* {
+    font-family: 'Cabin';
+}
+
+h2 {
+    margin-bottom: .1in;
+    line-height: 140%;
+}
+
+h3,
+p,
+#body-1>div,
+#body-1>div>div,
+#body-1>blockquote>div {
+    margin-bottom: .07in;
+    line-height: 140%;
+}
+
+span {
+    display: inline-block;
+    margin-bottom: .07in;
+    line-height: 140%;
+}
+
+tbody {
+    text-align: center;
+}
+
+tr:first-child {
+    background-color: #222222;
+    color: white;
+}
+
+/* edit delete, and update styling */
+#edit-delete-wrapper {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+/* comments styling */
+
+#name,
+#commentinput,
+#comment {
+    width: 20rem;
+}
+
+@media screen and (min-width: 640px) {
+
+    #name,
+    #commentinput,
+    #comment {
+        width: 30rem;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    #postimage {
+        width: 45%;
+    }
+
+    #article-title-2 {
+        width: 70%;
+    }
+
+    #author-name {
+        width: 70%;
+        max-width: none;
+    }
+
+    #body-1 {
+        font-size: 1rem;
+        width: 70%;
+    }
+}

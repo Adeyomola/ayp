@@ -1,0 +1,19 @@
+<header>
+    <a id="title" title="home" href="{{ url_for ('home') }}">
+        <span>AboutYourPC</span>
+        <span style="margin-left: -1rem;"><i class="fa fa-desktop" aria-hidden="true" style="scale: 0.5;"></i><i
+                class="fa fa-mobile" aria-hidden="true" style="scale: 0.65;"></i></span>
+    </a>
+    <nav>
+        <a href="{{ url_for ('blog.post') }}" title="posts">
+            All Posts</a>
+        {% if session['user_id'] %}
+        <a href="/write">
+            Write</a>
+        <a href="/logout" title="posts">
+            Log Out</a>
+        {% endif %}
+    </nav>
+</header>
+{% block content %}
+{% endblock %}

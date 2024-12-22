@@ -1,0 +1,25 @@
+#paginator {
+    display: flex;
+    margin-bottom: 3vh;
+    font-family: 'Nunito';
+    align-self: center;
+}
+
+.pageNumbers {
+    text-decoration: none;
+    font-family: 'Nunito';
+    margin: 0 2px;
+    padding: 5px 10px;
+    background-color: #2222221f;
+    color: #222222;
+}
+
+.active {
+    background-color: #222222;
+    color: #ffff;
+}
+
+#paginator>span {
+    margin-left: 5px;
+    padding: 5px 10px;
+}

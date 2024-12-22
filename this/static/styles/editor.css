@@ -1,0 +1,98 @@
+#editorbuttoncontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2vh 2vh;
+}
+
+.editorbuttons,
+select {
+    width: 9vw;
+    margin: 0.1rem 0.1rem;
+    padding: 0.5rem;
+    font: 500 2.5vw 'Nunito';
+    color: #1d242c;
+    border-radius: 0.2rem;
+    border: none;
+    text-align: center;
+    background-color: #1d242c1a;
+}
+
+select {
+    width: fit-content;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+.editorbuttons:hover {
+    transform: none;
+    border: 1px solid #1d242c;
+    cursor: pointer;
+}
+
+button {
+    margin: 0;
+}
+
+#postimage {
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+}
+
+label {
+    width: fit-content;
+    margin: 0.1rem 0.1rem;
+    padding: 0.5rem;
+    font: 500 2.5vw 'Nunito';
+    color: #1d242c;
+    border-radius: 0.2rem;
+    border: none;
+    text-align: center;
+    background-color: #1d242c1a;
+}
+
+label:hover {
+    transform: none;
+    border: 1px solid #1d242c;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 640px) {
+
+    .editorbuttons {
+        width: 4vw;
+        font-size: 1.5vw;
+    }
+
+    select, label {
+        font-size: 1.3vw;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .editorbuttons {
+        width: 3vw;
+        font-size: 1.2vw;
+    }
+
+    select, label {
+        font-size: 1.2vw;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+
+    .editorbuttons {
+        width: 2.5vw;
+        font-size: 0.8vw;
+    }
+
+    select, label {
+        font-size: 0.8vw
+    }
+}

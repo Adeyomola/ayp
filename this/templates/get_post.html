@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ post_row['meta'] }}">
+    <meta property="og:image" content="{{ post_row['image_url'] }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Nunito">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/getpost.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/buttons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fa/css/font-awesome.min.css') }}">
+    {% include 'head.html' %}
+    {% include 'cookies.html' %}
+    <title>{{ post_row['title'] }}</title>
+</head>
+
+<body>
+    {% extends 'nav.html' %}
+    {% block content %}
+    <article>
+        <div id="postimage">
+            <img src="{{ post_row['image_url'] }}" alt="{{ post_row['title'] | safe }}">
+            {% if post_row ['image_credit'] is not none %}
+            {{ post_row ['image_credit'] | safe }}
+            {% endif %}
+        </div>
+        <div id="author-name" style="display: flex; flex-direction: column; padding: 0.5rem;">
+            {% if author_image %}
+            <img src="{{ author_image }}" alt="{{ post_row['firstname'] }}" height="35" width="35"
+                style="border-radius: 50%;">
+            {% endif %}
+            <p>Written By <strong><a href="/author/{{ post_row['firstname'] }}" style="color: #333">{{
+                        post_row['firstname'] }}</a></strong>
+            </p>
+            {% include 'share.html' %}
+        </div>
+        <h1 id="article-title-2"> {{ post_row['title'] | safe }} </h1>
+        <div id="body-1"> {{ post_row['body'] | safe }} </div>
+    </article>
+    {% if session['user_id'] == post_row['author_id'] or session['user_id'] == 1 %}
+    <div id="edit-delete-wrapper">
+        <a id="edit-anchor" href="{{ url_for ('blog.update_post', post_title=post_row['title']) }}">
+            <button id="edit-delete" type="submit" value="Edit">Edit</button></a>
+        <form id="delete-form" action="{{ url_for ('blog.delete_post', post_title=post_row['title']) }}" method="post">
+            <button id="edit-delete" type="submit" onclick="return confirm ('Are you sure?')"
+                value="Delete">Delete</button>
+        </form>
+    </div>
+    {% elif not session['user_id'] %}
+    <form action="" method="post"
+        style="display: flex; flex-direction: column; align-items: center; margin-bottom: 30px">
+        <textarea name="name" id="name" style="resize: none; padding: 0.2rem; font-family: Montserrat;"
+            placeholder="Name" required></textarea>
+        <textarea name="comment" id="commentinput"
+            style="height: 20vh; resize: none; padding: 0.2rem; font-family: Montserrat; margin: 1rem;"
+            placeholder="Please leave a comment"></textarea>
+        <button type="submit">Submit Comment</button>
+    </form>
+    {% endif %}
+    {% if not session['user_id'] %}
+    <section style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+        {% if comments %}
+        <p style="font: 1rem Cabin; font-weight: 600; text-decoration: underline;">Comments</p>
+        {% endif %}
+        {% for comment in comments %}
+        <summary id="comment" style="margin: 0.5rem;">
+            <p style="font: 0.9rem Cabin; font-weight: 600;">{{ comment['name'] }}:</p>
+            <p style="font: 0.8rem Montserrat;">{{ comment['comment'] }}</p>
+        </summary>
+        {% endfor %}
+    </section>
+    {% endif %}
+    {% include 'footer.html' %}
+    {% endblock %}
+</body>
+
+</html>

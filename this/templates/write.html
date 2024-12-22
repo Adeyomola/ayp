@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phones, Computers, Gadgets">
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito|Quicksand">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/write.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/editor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fa/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/buttons.css') }}">
+    <script src="{{ url_for('blog.static', filename='js/temp.js')}}" defer></script>
+    {% include 'head.html' %}
+    <title>Write | AboutYourPC</title>
+</head>
+
+<body>
+    {% extends 'nav.html' %}
+
+    {% block content %}
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    <div id="editorbuttoncontainer">
+        <select id="formatBlock">
+            <option value="p" selected>Paragraph</option>
+            <option value="h1">Heading 1</option>
+            <option value="h2">Heading 2</option>
+            <option value="h3">Heading 3</option>
+            <option value="h4">Heading 4</option>
+            <option value="h5">Heading 5</option>
+            <option value="h6">Heading 6</option>
+        </select>
+        <button class="editorbuttons" id="bold"><b>B</b></button>
+        <button class="editorbuttons" id="italic"><em>I</em></button>
+        <button class="editorbuttons" id="underline"><u>U</u></button>
+        <!-- <button class="editorbuttons" id="quotes"><i class="fa fa-quote-left"></i></button> -->
+        <button class="editorbuttons" id="justifyCenter"><i class="fa fa-align-justify"></i></button>
+        <button class="editorbuttons" id="justifyLeft"><i class="fa fa-align-left"></i></button>
+        <button class="editorbuttons" id="justifyRight"><i class="fa fa-align-right"></i></button>
+        <button class="editorbuttons" id="insertUnorderedList"><i class="fa fa-list-ul"></i></button>
+        <button class="editorbuttons" id="insertOrderedList"><i class="fa fa-list-ol"></i></button>
+        <button id="undo" class="editorbuttons">&#8630</button>
+        <button id="redo" class="editorbuttons">&#8631</button>
+        <button id="strikeThrough" class="editorbuttons"><i class="fa fa-strikethrough"></i></button>
+        <button id="subscript" class="editorbuttons"><i class="fa fa-subscript"></i></button>
+        <button id="superscript" class="editorbuttons"><i class="fa fa-superscript"></i></button>
+        <button id="createLink" class="editorbuttons"><i class="fa fa-link"></i></button>
+        <button id="unlink" class="editorbuttons"><i class="fa fa-unlink"></i></button>
+        <button id="outdent" class="editorbuttons"><i class="fa fa-outdent"></i></button>
+        <button id="indent" class="editorbuttons"><i class="fa fa-indent"></i></button>
+    </div>
+    <form method="post" enctype=multipart/form-data>
+        <input type="text" id="article-title-1" placeholder="Title:" name="title" autocomplete="off" required>
+        <input type="hidden" id="hiddeninput" name="body">
+        <div id="body" contenteditable="true">
+        </div>
+        <label for="postimage"> Upload Post Image </label>
+        <input type="file" id="postimage" name="file" accept="image/png, image/jpeg, image/webp">
+        <select id="formatBlock" name="category" required>
+            <option value="" selected>Category</option>
+            <option value="mobile">Mobile</option>
+            <option value="desktop">Desktop</option>
+            <option value="gadgets">Gadgets</option>
+        </select>
+        <input type="text" name="fragment" id="fragment" placeholder="slug">
+        <input type="text" name="image_credit" id="image_credit" placeholder="image credit">
+        <input type="text" name="meta" id="meta_description" placeholder="meta description">
+        <button type="submit"
+            onclick="document.getElementById('hiddeninput').value = document.getElementById('body').innerHTML"> Submit
+        </button>
+    </form>
+    <!-- PopUp -->
+    <div id="linkPopUp"
+        style="display: none; width: 100vw; height: 100vh; position: fixed; font: 0.8rem 'Nunito'; z-index: 100; background-color: #1d242c1a;  align-items: center; justify-content: center;">
+        <button id="closePopUp" style="position: absolute; right: 10px; top: 1px; border: none; font-size: x-large;"
+            onclick="document.getElementById('linkPopUp').style.display='none'">X</button>
+        <div style="background-color: #2a4360; color: #fff; padding: 1rem; border-radius: 0.2rem;">Enter a URL:
+            <input id="link" type="text" value="https://" style="outline: none;">
+            <button id="linkButton"
+                style="margin-top: 0; margin-bottom: 0; padding: 0.1rem; background-color: #fff; font-size: 0.8rem;">enter</button>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>
