@@ -2,7 +2,7 @@
     width: 100vw;
     height: fit-content;
     margin-top: 1rem;
-    min-height: fit-content;
+    min-height: 100lvh;
     margin-bottom: 27vh;
 }
 
