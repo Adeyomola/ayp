@@ -8,7 +8,7 @@ secret_key=os.environ.get('SECRET_KEY')
 
 db_password=up.quote_plus(os.environ.get('DB_PASSWORD'))
 db_user=os.environ.get('DB_USER')
-host=os.environ.get('HOST')
+host=os.environ.get('DB_HOST')
 db_name=os.environ.get('DATABASE')
 db_path = "./data"
 
