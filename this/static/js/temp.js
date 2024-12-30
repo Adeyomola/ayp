@@ -25,7 +25,6 @@ const buttons = [
   "formatBlock",
   "outdent",
   "indent",
-  "insertImage"
 ];
 
 // variables for selection preservation
@@ -120,7 +119,7 @@ buttons.forEach((element) => {
   }
 });
 
-// get inlineimage element
+// get inlineimage elemeent
 const inlineImage = document.getElementById("inlineImage");
 
 body.addEventListener("paste", (e) => {
