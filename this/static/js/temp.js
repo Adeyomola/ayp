@@ -25,6 +25,7 @@ const buttons = [
   "formatBlock",
   "outdent",
   "indent",
+  "insertImage"
 ];
 
 // variables for selection preservation
@@ -33,7 +34,7 @@ let end;
 let selection;
 let selected;
 
-// gets selection offset be entering popup
+// gets selection offset be entering modal
 function preserveSelection() {
   selection = document.getSelection();
   if (selection.anchorOffset < selection.focusOffset) {
@@ -46,7 +47,7 @@ function preserveSelection() {
   selected = selection.focusNode;
 }
 
-// restores selection when we're leaving popup
+// restores selection when we're leaving modal
 function restoreSelection() {
   let range = document.createRange();
 
@@ -57,7 +58,7 @@ function restoreSelection() {
   selection.addRange(range);
 }
 
-// function that saves link entered in popup
+// function that saves link entered in modal
 function saveLink(command) {
   link.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
@@ -119,7 +120,7 @@ buttons.forEach((element) => {
   }
 });
 
-// get inlineimage elemeent
+// get inlineimage element
 const inlineImage = document.getElementById("inlineImage");
 
 body.addEventListener("paste", (e) => {
