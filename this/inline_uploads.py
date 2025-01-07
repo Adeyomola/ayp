@@ -62,4 +62,4 @@ def list_files():
 @bp.route('/uplds', methods=['POST'])
 def upload_file():
     Upload.upload_file(Upload)
-    return return flash("Upload Completed")
+    return flash("Upload Completed")
