@@ -1,4 +1,4 @@
-from flask import request, Blueprint, redirect, flash
+from flask import request, Blueprint, redirect
 import boto3
 from datetime import date
 import string
@@ -36,7 +36,6 @@ class Upload:
         return image_url
     
     def delete_file(image_url):
-        image_url = image_url.split("://")[1].split("/")[1]
         s3.delete_object(Bucket='verba-post-images', Key=image_url)
 
     def convert_to_webp(stream):
@@ -62,4 +61,9 @@ def list_files():
 @bp.route('/uplds', methods=['POST'])
 def upload_file():
     Upload.upload_file(Upload)
-    return flash("Upload Completed")
+    return redirect(request.referrer)
+
+@bp.route('/meed/delete/<key>', methods=['POST'])
+def delete_media(key):
+    Upload.delete_file(key)
+    return redirect(request.referrer)

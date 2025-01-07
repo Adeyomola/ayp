@@ -138,7 +138,13 @@ function show_media() {
     .then((data) => {
       images.innerHTML = "";
       for (objects of data.result) {
-        images.innerHTML += `<img src="https://verba-post-images.s3.${data.region}.amazonaws.com/${objects["Key"]}" height=100 width=100>`;
+        images.innerHTML += `
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <img src="https://verba-post-images.s3.${data.region}.amazonaws.com/${objects["Key"]}" style="height: 81.6px; width: 100px">
+          <form action="/meed/delete/${objects["Key"]}" method="post" style="height: max-content; width: max-content;">
+            <button type="submit" onclick="return confirm ('Are you sure?')" style="margin: 2px; padding: 0; background-color: transparent; color: initial; border: none;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </form>
+        </div>`;
       }
       // insert inline image
       images.childNodes.forEach((el) => {
@@ -150,3 +156,14 @@ function show_media() {
     });
   media.toggleAttribute("hidden");
 }
+
+const upload_menu = document.getElementById("upload_menu");
+const close_upload_menu = document.getElementById("close_upload_menu");
+
+function show_upload_menu() {
+  upload_menu.toggleAttribute("hidden");
+}
+
+close_upload_menu.onclick = () => {
+  upload_menu.toggleAttribute("hidden");
+};

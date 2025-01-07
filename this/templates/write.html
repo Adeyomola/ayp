@@ -29,18 +29,24 @@
         <span id="close_modal">
             &times;
         </span>
-        <!-- Upload Media -->
+        <div style="display: grid; justify-content: center; align-items: center; overflow-y: scroll; height: 100lvh;">
+            <div id="images"></div>
+        </div>
+    </div>
+    <!-- Upload Media -->
+    <div id="upload_menu" hidden></span>
         <div style="display: grid; justify-content: center; overflow-y: scroll; height: 100lvh;">
             <form action="/uplds" enctype=multipart/form-data method="post" id="upload_menu" style="margin: 20px;">
+                <span id="close_upload_menu">
+                    &times;
+                </span>
                 <label style="background-color: #333; color: #cbcbcb;" for="postimage">Add Image</label>
                 <input class="editorbuttons" type="file" id="postimage" name="file"
                     accept="image/png, image/jpeg, image/webp">
                 <button type="submit" style="margin: 2px;">Upload</button>
             </form>
-            <div id="images"></div>
         </div>
     </div>
-
     <div id="editorbuttoncontainer">
         <select id="formatBlock">
             <option value="p" selected>Paragraph</option>
@@ -70,6 +76,7 @@
         <button id="outdent" class="editorbuttons"><i class="fa fa-outdent"></i></button>
         <button id="indent" class="editorbuttons"><i class="fa fa-indent"></i></button>
         <button class="editorbuttons" onclick="show_media()"><i class="fa fa-picture-o"></i></button>
+        <button class="editorbuttons" onclick="show_upload_menu()"><i class="fa fa-file"></i></button>
         <button id="fontSize" class="editorbuttons">Att.</button>
     </div>
     <form method="post" enctype=multipart/form-data>

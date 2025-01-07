@@ -111,7 +111,8 @@ form>input {
 }
 
 /* Modal */
-#media {
+#media,
+#upload_menu {
     text-align: center;
     top: 0;
     z-index: 1;
@@ -121,7 +122,8 @@ form>input {
     background-color: #ffffffb5;
 }
 
-#close_modal {
+#close_modal,
+#close_upload_menu {
     position: fixed;
     top: 0;
     right: 0;
