@@ -1,4 +1,4 @@
-from flask import request, Blueprint, redirect, url_for
+from flask import request, Blueprint, redirect, flash
 import boto3
 from datetime import date
 import string
@@ -62,4 +62,4 @@ def list_files():
 @bp.route('/uplds', methods=['POST'])
 def upload_file():
     Upload.upload_file(Upload)
-    return redirect(request.referrer)
+    return return flash("Upload Completed")
