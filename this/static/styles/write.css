@@ -84,10 +84,12 @@ form>input {
     color: #1d242c;
 }
 
-#body>img,
-#body>div>img,
-#body>p>img {
+#body img {
     width: 60%;
+}
+
+#body a {
+    color: #333;
 }
 
 @media screen and (min-width: 1024px) {
