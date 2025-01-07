@@ -121,7 +121,8 @@ tr:first-child {
 }
 
 #body-1>img,
-#body-1>div>img, #body-1>p>img {
+#body-1>div>img,
+#body-1>p>img {
     width: 60%;
 }
 
