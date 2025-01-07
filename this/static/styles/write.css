@@ -84,8 +84,9 @@ form>input {
     color: #1d242c;
 }
 
-#body>img,
-#body>div>img {
+#body-1>img,
+#body-1>div>img,
+#body-1>p>img {
     width: 60%;
 }
 
