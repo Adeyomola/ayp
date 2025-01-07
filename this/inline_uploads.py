@@ -62,4 +62,4 @@ def list_files():
 @bp.route('/uplds', methods=['POST'])
 def upload_file():
     Upload.upload_file(Upload)
-    return redirect(url_for('blog.write'))
+    return redirect(request.referrer)
