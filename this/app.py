@@ -29,6 +29,9 @@ def create_app():
     from . import moved
     app.register_blueprint(moved.bp)
 
+    from . import inline_uploads
+    app.register_blueprint(inline_uploads.bp)
+
     @app.route('/', methods=['GET', 'POST'])
     def home():
             return render_template('index.html', posts=blog.front_posts())

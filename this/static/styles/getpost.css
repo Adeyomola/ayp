@@ -120,6 +120,11 @@ tr:first-child {
     color: white;
 }
 
+#body-1>img,
+#body-1>div>img {
+    width: 60%;
+}
+
 /* edit delete, and update styling */
 #edit-delete-wrapper {
     display: flex;

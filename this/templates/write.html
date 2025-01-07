@@ -24,6 +24,23 @@
     {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
     {% endfor %}
+    <!-- Show Uploaded Media -->
+    <div id="media" hidden></span>
+        <span id="close_modal">
+            &times;
+        </span>
+        <!-- Upload Media -->
+        <div style="display: grid; justify-content: center; overflow-y: scroll; height: 100lvh;">
+            <form action="/uplds" enctype=multipart/form-data method="post" id="upload_menu" style="margin: 20px;">
+                <label style="background-color: #333; color: #cbcbcb;" for="postimage">Add Image</label>
+                <input class="editorbuttons" type="file" id="postimage" name="file"
+                    accept="image/png, image/jpeg, image/webp">
+                <button type="submit" style="margin: 2px;">Upload</button>
+            </form>
+            <div id="images"></div>
+        </div>
+    </div>
+
     <div id="editorbuttoncontainer">
         <select id="formatBlock">
             <option value="p" selected>Paragraph</option>
@@ -38,8 +55,8 @@
         <button class="editorbuttons" id="italic"><em>I</em></button>
         <button class="editorbuttons" id="underline"><u>U</u></button>
         <!-- <button class="editorbuttons" id="quotes"><i class="fa fa-quote-left"></i></button> -->
-        <button class="editorbuttons" id="justifyCenter"><i class="fa fa-align-justify"></i></button>
         <button class="editorbuttons" id="justifyLeft"><i class="fa fa-align-left"></i></button>
+        <button class="editorbuttons" id="justifyCenter"><i class="fa fa-align-center"></i></button>
         <button class="editorbuttons" id="justifyRight"><i class="fa fa-align-right"></i></button>
         <button class="editorbuttons" id="insertUnorderedList"><i class="fa fa-list-ul"></i></button>
         <button class="editorbuttons" id="insertOrderedList"><i class="fa fa-list-ol"></i></button>
@@ -52,6 +69,8 @@
         <button id="unlink" class="editorbuttons"><i class="fa fa-unlink"></i></button>
         <button id="outdent" class="editorbuttons"><i class="fa fa-outdent"></i></button>
         <button id="indent" class="editorbuttons"><i class="fa fa-indent"></i></button>
+        <button class="editorbuttons" onclick="show_media()"><i class="fa fa-picture-o"></i></button>
+        <button id="fontSize" class="editorbuttons">Att.</button>
     </div>
     <form method="post" enctype=multipart/form-data>
         <input type="text" id="article-title-1" placeholder="Title:" name="title" autocomplete="off" required>

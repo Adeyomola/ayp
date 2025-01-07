@@ -25,6 +25,7 @@ const buttons = [
   "formatBlock",
   "outdent",
   "indent",
+  "fontSize",
 ];
 
 // variables for selection preservation
@@ -113,34 +114,39 @@ buttons.forEach((element) => {
       e.preventDefault();
       element.selectedIndex = 0;
     };
+  } else if (element === "fontSize") {
+    element = document.getElementById(element);
+    element.onclick = () => document.execCommand(command, false, 1);
   } else {
     element = document.getElementById(element);
     element.onclick = () => document.execCommand(command);
   }
 });
 
-// get inlineimage elemeent
-const inlineImage = document.getElementById("inlineImage");
+// show media
+const media = document.getElementById("media");
+const close_modal = document.getElementById("close_modal");
+const images = document.getElementById("images");
 
-body.addEventListener("paste", (e) => {
-  let data = e.clipboardData.files[0];
-  let reader = new FileReader();
-  const image = document.createElement("img");
+close_modal.onclick = () => {
+  media.toggleAttribute("hidden");
+};
 
-  if (data) {
-    reader.readAsDataURL(data);
-
-    preserveSelection();
-
-    restoreSelection();
-
-    reader.addEventListener("load", () => {
-      selected.innerHTML =
-        "<br> <img height=400 style='display: block; margin: 0 auto' src=" +
-        reader.result +
-        "> </img>";
+function show_media() {
+  fetch("/meed")
+    .then((res) => res.json())
+    .then((data) => {
+      images.innerHTML = "";
+      for (objects of data.result) {
+        images.innerHTML += `<img src="https://verba-post-images.s3.${data.region}.amazonaws.com/${objects["Key"]}" height=100 width=100>`;
+      }
+      // insert inline image
+      images.childNodes.forEach((el) => {
+        el.addEventListener("click", () => {
+          document.execCommand("insertImage", false, el.src);
+          media.toggleAttribute("hidden");
+        });
+      });
     });
-  } else {
-    document.execCommand("removeFormat");
-  }
-});
+  media.toggleAttribute("hidden");
+}
