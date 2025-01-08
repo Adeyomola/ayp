@@ -108,6 +108,10 @@ form>input {
     #meta_description {
         width: 30%;
     }
+
+    #body img {
+        width: 63.64%;
+    }
 }
 
 /* Modal */

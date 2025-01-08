@@ -169,4 +169,8 @@ tr:first-child {
         font-size: 1rem;
         width: 70%;
     }
+
+    #body-1 img {
+        width: 63.64%;
+    }
 }
